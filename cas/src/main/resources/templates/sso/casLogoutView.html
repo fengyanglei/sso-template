@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>SSO登出</title>
+</head>
+
+<body>
+
+<script>
+
+    //跳转到登录页
+    var serviceUrl = getQueryString("service");
+    if (serviceUrl == null || serviceUrl == '') {
+        serviceUrl = '/cas/login';
+    }
+    window.location.href = serviceUrl;
+
+    /**
+     * 获取url参数
+     * @param name
+     * @returns {*}
+     */
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+</script>
+
+</body>
+</html>

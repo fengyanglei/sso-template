@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>单点登录SSO</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel="stylesheet" th:href="@{${#themes.code('sso.standard.css.file')}}"/>
+
+    <style>
+        body{text-align:center}
+        .form_login{margin:0 auto}
+    </style>
+</head>
+
+<body>
+    <div class="form_login">
+
+        <form method="post" th:object="${credential}">
+            <h2>SSO</h2>
+            <section class="row">
+                <div th:unless="${openIdLocalId}">
+                    <input class="required"
+                           id="username"
+                           size="25"
+                           tabindex="1"
+                           placeholder="用户名"
+                           type="text"
+                           th:disabled="${guaEnabled}"
+                           th:field="*{username}"
+                           th:accesskey="#{screen.welcome.label.netid.accesskey}"
+                           autocomplete="off"/>
+                </div>
+            </section>
+
+            <section class="row">
+                <div>
+                    <input class="required"
+                           type="password"
+                           id="password"
+                           size="25"
+                           tabindex="2"
+                           placeholder="密码"
+                           th:accesskey="#{screen.welcome.label.password.accesskey}"
+                           th:field="*{password}"
+                           autocomplete="off"/>
+                </div>
+            </section>
+            <br/>
+
+            <section>
+                <input type="hidden" name="execution" th:value="${flowExecutionKey}"/>
+                <input type="hidden" name="_eventId" value="submit"/>
+                <input type="hidden" name="geolocation"/>
+                <input class="btn btn-submit btn-block btn_login"
+                       style="text-align: center"
+                       name="submit"
+                       accesskey="l"
+                       th:value="#{screen.welcome.button.login}"
+                       tabindex="6"
+                       type="submit"/>
+            </section>
+            <div th:if="${#fields.hasErrors('*')}">
+                <span th:each="err : ${#fields.errors('*')}" th:utext="${err}"/>
+            </div>
+
+        </form>
+
+    </div>
+<script th:src="@{${#themes.code('sso.javascript.file')}}"></script>
+</body>
+</html>

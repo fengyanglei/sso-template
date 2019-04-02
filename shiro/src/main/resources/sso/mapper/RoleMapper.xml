@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fyl.sso.shiro.dao.RoleMapper">
+
+  <!--根据账号获取角色-->
+  <select id="getRoles" resultType="java.lang.String">
+    SELECT r.name
+	FROM t_user_role ur, t_user u, t_role r
+	WHERE ur.user_id = u.id
+	AND ur.role_id = r.id
+	AND u.account = #{account,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>
