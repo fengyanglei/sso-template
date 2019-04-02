@@ -1,1 +1,1 @@
-## 供业务端使用 shiro-cas-authority.jar
+## 打包供业务端使用 shiro-cas-authority.jar
