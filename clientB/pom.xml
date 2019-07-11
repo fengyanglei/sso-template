@@ -5,12 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.fyl.sso</groupId>
-    <artifactId>client-demo</artifactId>
+    <artifactId>clientB</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
         <spring.version>4.3.20.RELEASE</spring.version>
+        <thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
     </properties>
 
     <dependencies>
@@ -34,26 +35,19 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--前端模板引擎thymeleaf-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+
+
     </dependencies>
-
-    <build>
-        <finalName>client-demo</finalName>
-        <plugins>
-
-            <!--  tomcat7 plugin -->
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.1</version>
-                <configuration>
-                    <port>8081</port>
-                    <uriEncoding>UTF-8</uriEncoding>
-                    <server>tomcat7</server>
-                    <path>/</path>
-                </configuration>
-            </plugin>
-
-        </plugins>
-    </build>
 
 </project>

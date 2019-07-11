@@ -30,8 +30,8 @@ CREATE TABLE `t_role` (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES ('1', '管理员');
-INSERT INTO `t_role` VALUES ('2', '一般用户');
+INSERT INTO `t_role` VALUES ('1', 'admin');
+INSERT INTO `t_role` VALUES ('2', 'test');
 
 -- ----------------------------
 -- Table structure for t_role_permission
