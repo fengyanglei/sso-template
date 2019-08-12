@@ -37,6 +37,7 @@
 		<property name="redirectUrl" value="${shiro.logoutUrl}" />
 	</bean>
 
+	<!--继承类org.apache.shiro.cas.CasRealm-->
 	<bean id="casRealm" class="com.fyl.sso.shiro.realm.UserRealm">
 		<!-- 认证通过后的默认角色 -->
 		<!-- <property name="defaultRoles" value="ROLE_USER" /> -->
@@ -46,30 +47,18 @@
 		<property name="casService" value="${shiro.cas.service}" />
 	</bean>
 
-	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<!-- Shiro的主要业务层对象，用于支持web的应用程序 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<!-- <property name="sessionManager" ref="sessionManager" /> -->
 		<property name="subjectFactory" ref="casSubjectFactory"></property>
 		<property name="realm" ref="casRealm" />
 	</bean>
 
 	<bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"></bean>
 
-
-
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
 	</bean>
-
-
-	<!-- <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager"> 
-		<property name="globalSessionTimeout" value="3600000" /> <property name="sessionDAO" 
-		ref="sessionDAO" /> </bean> -->
-
-	<!-- <bean id="sessionDAO" class="com.distinct.web.session.redis.RedisSessionDAO"> 
-		<property name="sessionTimeout" value="1800000" /> <property name="redisManager" 
-		ref="redisManager" /> </bean> -->
 
 	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 
@@ -79,9 +68,6 @@
 			value="org.apache.shiro.SecurityUtils.setSecurityManager"></property>
 		<property name="arguments" ref="securityManager"></property>
 	</bean>
-	
-	
-	
 
 
 </beans>

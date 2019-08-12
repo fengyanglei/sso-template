@@ -6,10 +6,6 @@
 
 
     <display-name>client-demo</display-name>
-    <!--<context-param>-->
-        <!--<param-name>webAppRootKey</param-name>-->
-        <!--<param-value>client-demo-1.root</param-value>-->
-    <!--</context-param>-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:conf/spring-context.xml</param-value>
